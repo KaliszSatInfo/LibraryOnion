@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Database\Migrations;
+
+use CodeIgniter\Database\Migration;
+
+class MigrationBookGenre extends Migration
+{
+    public function up()
+    {
+        $this->forge->addField([
+            'book_id' => ['type' => 'INT', 'unsigned' => true],
+            'genre_id' => ['type' => 'INT', 'unsigned' => true]
+        ]);
+        $this->forge->addForeignKey('book_id', 'book', 'id');
+        $this->forge->addForeignKey('genre_id', 'genre', 'id');
+        $this->forge->createTable('book_genre');
+    }
+ 
+    public function down()
+    {
+        
+    }
+}
