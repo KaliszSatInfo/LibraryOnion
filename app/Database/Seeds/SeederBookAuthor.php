@@ -15,7 +15,6 @@ class SeederBookAuthor extends Seeder
         $bookIds   = array_column($bookIds, 'id');
 
         if (empty($authorIds) || empty($bookIds)) {
-            echo "No authors or books found. Skipping seeder.\n";
             return;
         }
 

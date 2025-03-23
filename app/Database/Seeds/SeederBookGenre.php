@@ -14,7 +14,6 @@ class SeederBookGenre extends Seeder
         $genreIds = array_column($db->table('genre')->select('id')->get()->getResultArray(), 'id');
 
         if (empty($bookIds) || empty($genreIds)) {
-            echo "No books or genres found. Skipping seeder.\n";
             return;
         }
 
