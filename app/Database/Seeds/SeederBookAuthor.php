@@ -20,7 +20,7 @@ class SeederBookAuthor extends Seeder
 
         for ($i = 0; $i < 5000; $i++) {
             $data = [
-                'book_id'   => $bookIds[array_rand($bookIds)],
+                'book_id' => $bookIds[array_rand($bookIds)],
                 'author_id' => $authorIds[array_rand($authorIds)],
             ];
 

@@ -19,7 +19,7 @@ class SeederBookGenre extends Seeder
 
         for ($i = 0; $i < 5000; $i++) {
             $db->table('book_genre')->insert([
-                'book_id'  => $bookIds[array_rand($bookIds)],
+                'book_id' => $bookIds[array_rand($bookIds)],
                 'genre_id' => $genreIds[array_rand($genreIds)],
             ]);
         }
