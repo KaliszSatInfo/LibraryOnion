@@ -15,7 +15,7 @@ class ControllerHomepage extends BaseController
 
     public function loadHomepage()
     {
-        $data['items'] = $this->library->getSelectedAuthors();
+        $data['items'] = $this->library->getBookAuthors();
         return view('ViewHomepage', $data);
     }
 }

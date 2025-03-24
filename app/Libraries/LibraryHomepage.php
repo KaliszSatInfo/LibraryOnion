@@ -6,14 +6,14 @@ use App\Models\ModelBook;
 
 class LibraryHomepage
 {
-    protected $modelBook;
+    var $modelBook;
 
     public function __construct()
     {
         $this->modelBook = new ModelBook();
     }
 
-    public function getSelectedAuthors()
+    public function getBookAuthors()
     {
         return $this->modelBook
             ->select('book.*, author.first_name, author.last_name, author.portrait_image')

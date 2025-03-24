@@ -8,45 +8,45 @@ class SeederBookAuthor extends Seeder
 {
     public function run()
     {
-        $bookId = $this->db->table('book')->select('id')->get()->getResultArray();
-        $authorId = $this->db->table('author')->select('id')->get()->getResultArray();
+        $bookIds = $this->db->table('book')->select('id')->get()->getResultArray();
+        $authorIds = $this->db->table('author')->select('id')->get()->getResultArray();
 
-        $bookId = array_column($bookId, 'id');
-        $authorId = array_column($authorId, 'id');
+        $bookIds = array_column($bookIds, 'id');
+        $authorIds = array_column($authorIds, 'id');
 
-        foreach ($authorId as $singleAuthorId) {
-            $randomBookId = $bookId[array_rand($bookId)];
+        foreach ($authorIds as $authorId) {
+            $randomBookId = $bookIds[array_rand($bookIds)];
 
             $this->db->table('book_author')->insert([
                 'book_id'   => $randomBookId,
-                'author_id' => $singleAuthorId
+                'author_id' => $authorId
             ]);
         }
 
-        foreach ($bookId as $singleBookId) {
+        foreach ($bookIds as $bookId) {
             $existing = $this->db->table('book_author')
-                ->where('book_id', $singleBookId)
+                ->where('book_id', $bookId)
                 ->countAllResults();
 
             if ($existing === 0) {
-                $author = $authorId[array_rand($authorId)];
+                $author = $authorIds[array_rand($authorIds)];
 
                 $this->db->table('book_author')->insert([
-                    'book_id'   => $singleBookId,
+                    'book_id'   => $bookId,
                     'author_id' => $author
                 ]);
             }
 
             if (rand(1, 100) <= 5) {
-                $author = $authorId[array_rand($authorId)];
+                $author = $authorIds[array_rand($authorIds)];
 
                 $exists = $this->db->table('book_author')
-                    ->where(['book_id' => $singleBookId, 'author_id' => $author])
+                    ->where(['book_id' => $bookId, 'author_id' => $author])
                     ->countAllResults();
 
                 if (!$exists) {
                     $this->db->table('book_author')->insert([
-                        'book_id'   => $singleBookId,
+                        'book_id'   => $bookId,
                         'author_id' => $author
                     ]);
                 }
