@@ -14,20 +14,42 @@ class SeederBookAuthor extends Seeder
         $bookId = array_column($bookId, 'id');
         $authorId = array_column($authorId, 'id');
 
+        foreach ($authorId as $singleAuthorId) {
+            $randomBookId = $bookId[array_rand($bookId)];
+
+            $this->db->table('book_author')->insert([
+                'book_id'   => $randomBookId,
+                'author_id' => $singleAuthorId
+            ]);
+        }
+
         foreach ($bookId as $singleBookId) {
-            $chance = rand(1, 100);
+            $existing = $this->db->table('book_author')
+                ->where('book_id', $singleBookId)
+                ->countAllResults();
 
-            if ($chance <= 5) {
-                $selectedAuthors = (array) array_rand(array_flip($authorId), 2);
-            } else {
-                $selectedAuthors = [array_rand($authorId)];
-            }
+            if ($existing === 0) {
+                $author = $authorId[array_rand($authorId)];
 
-            foreach ($selectedAuthors as $singleAuthorId) {
                 $this->db->table('book_author')->insert([
                     'book_id'   => $singleBookId,
-                    'author_id' => $singleAuthorId
+                    'author_id' => $author
                 ]);
+            }
+
+            if (rand(1, 100) <= 5) {
+                $author = $authorId[array_rand($authorId)];
+
+                $exists = $this->db->table('book_author')
+                    ->where(['book_id' => $singleBookId, 'author_id' => $author])
+                    ->countAllResults();
+
+                if (!$exists) {
+                    $this->db->table('book_author')->insert([
+                        'book_id'   => $singleBookId,
+                        'author_id' => $author
+                    ]);
+                }
             }
         }
     }

@@ -11,7 +11,7 @@ class SeederAuthor extends Seeder
     {
         $faker = Factory::create();
 
-        for($i = 0; $i < 2500; $i++){
+        for($i = 0; $i < 750; $i++){
             $data = [
                 'first_name' => $faker->firstName(),
                 'last_name' => $faker->lastName(),
