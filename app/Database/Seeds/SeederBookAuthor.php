@@ -8,24 +8,27 @@ class SeederBookAuthor extends Seeder
 {
     public function run()
     {
-        $authorIds = $this->db->table('author')->select('id')->get()->getResultArray();
-        $bookIds   = $this->db->table('book')->select('id')->get()->getResultArray();
+        $bookId = $this->db->table('book')->select('id')->get()->getResultArray();
+        $authorId = $this->db->table('author')->select('id')->get()->getResultArray();
 
-        $authorIds = array_column($authorIds, 'id');
-        $bookIds   = array_column($bookIds, 'id');
+        $bookId = array_column($bookId, 'id');
+        $authorId = array_column($authorId, 'id');
 
-        if (empty($authorIds) || empty($bookIds)) {
-            return;
-        }
+        foreach ($bookId as $singleBookId) {
+            $chance = rand(1, 100);
 
-        for ($i = 0; $i < 5000; $i++) {
-            $data = [
-                'book_id' => $bookIds[array_rand($bookIds)],
-                'author_id' => $authorIds[array_rand($authorIds)],
-            ];
+            if ($chance <= 5) {
+                $selectedAuthors = (array) array_rand(array_flip($authorId), 2);
+            } else {
+                $selectedAuthors = [array_rand($authorId)];
+            }
 
-            $this->db->table('book_author')->insert($data);
+            foreach ($selectedAuthors as $singleAuthorId) {
+                $this->db->table('book_author')->insert([
+                    'book_id'   => $singleBookId,
+                    'author_id' => $singleAuthorId
+                ]);
+            }
         }
     }
-
 }

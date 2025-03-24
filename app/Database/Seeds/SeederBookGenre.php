@@ -8,21 +8,21 @@ class SeederBookGenre extends Seeder
 {
     public function run()
     {
-        $db = \Config\Database::connect();
+        $bookId = $this->db->table('book')->select('id')->get()->getResultArray();
+        $genreId = $this->db->table('genre')->select('id')->get()->getResultArray();
 
-        $bookIds  = array_column($db->table('book')->select('id')->get()->getResultArray(), 'id');
-        $genreIds = array_column($db->table('genre')->select('id')->get()->getResultArray(), 'id');
+        $bookId = array_column($bookId, 'id');
+        $genreId = array_column($genreId, 'id');
 
-        if (empty($bookIds) || empty($genreIds)) {
-            return;
-        }
+        foreach ($bookId as $singleBookId) {
+            $selectedGenres = (array) array_rand(array_flip($genreId), rand(1, 3));
 
-        for ($i = 0; $i < 5000; $i++) {
-            $db->table('book_genre')->insert([
-                'book_id' => $bookIds[array_rand($bookIds)],
-                'genre_id' => $genreIds[array_rand($genreIds)],
-            ]);
+            foreach ($selectedGenres as $singleGenreId) {
+                $this->db->table('book_genre')->insert([
+                    'book_id'  => $singleBookId,
+                    'genre_id' => $singleGenreId,
+                ]);
+            }
         }
     }
-
 }
