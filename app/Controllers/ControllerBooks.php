@@ -18,8 +18,8 @@ class ControllerBooks extends BaseController
     public function loadBooks()
     {
         $itemsPerPage = $this->pageConfig->itemsPerPage;
-        $data['books'] = $this->modelAuthor->paginate($itemsPerPage);
-        $data['pager'] = $this->modelAuthor->pager;
-        return view('ViewBookss', $data);
+        $data['books'] = $this->modelBook->paginate($itemsPerPage);
+        $data['pager'] = $this->modelBook->pager;
+        return view('ViewBooks', $data);
     }
 }
