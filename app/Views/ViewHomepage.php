@@ -14,7 +14,7 @@
             <h4><?= esc($item->title) ?></h4>
             <p><?= esc($item->description) ?></p>
             <div class="d-flex align-items-center mt-3">
-              <img src="<?= esc($item->portrait_image) ?>" width="128" height="128" alt="Author">
+              <img src="<?= esc($item->portrait_image) ?>" class="me-2" width="96" height="96" alt="Author">
               <div><?= esc($item->first_name) . ' ' . esc($item->last_name) ?></div>
             </div>
           </div>
