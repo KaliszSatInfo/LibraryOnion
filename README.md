@@ -55,4 +55,4 @@
 ---
 
 ##  Assets & Šablony
-- **Soubory ve složkách `assets/`, `template/` a `layout/` by měly být všechno malými písmeny.**
+- **Složka `assets` a soubory `template` a `layout` jsou malými písmeny **
