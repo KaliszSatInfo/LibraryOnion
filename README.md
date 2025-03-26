@@ -21,7 +21,7 @@
 
 ---
 
-##  Konvence pojmenování v kůdu
+##  Konvence pojmenování v kódu
 ### **Obecná pravidla (anglicky, jednotné i množné číslo podle potřeby)**
 - **Proměnné**: `camelCase` (např. `library`, `data`, `index`, `items`)
 - **Metody**: `camelCase` (např. `loadHomepage`, `getBooksAuthors`)
