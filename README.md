@@ -55,4 +55,4 @@
 ---
 
 ##  Assets & Šablony
-- **Složka `assets` a soubory `template` a `layout` jsou malými písmeny **
+- **Složka `assets` a soubory `template` a `layout` jsou malými písmeny**
