@@ -7,17 +7,18 @@ use App\Models\ModelBook;
 class ControllerBooks extends BaseController
 {
     var $modelBook;
-    var $pageConfig;
+    var $config;
 
-    public function __construct()
+    public function initController($request, $response, $logger)
     {
+        parent::initController($request, $response, $logger);
         $this->modelBook = new ModelBook();
-        $this->pageConfig = config('App');
     }
+
 
     public function loadBooks()
     {
-        $itemsPerPage = $this->pageConfig->itemsPerPage;
+        $itemsPerPage = $this->config->itemsPerPage;
         $data['books'] = $this->modelBook->paginate($itemsPerPage);
         $data['pager'] = $this->modelBook->pager;
         return view('ViewBooks', $data);

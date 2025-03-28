@@ -3,21 +3,22 @@
 namespace App\Controllers;
 
 use App\Models\ModelAuthor;
+use Psr\Log\LoggerInterface;
 
 class ControllerAuthors extends BaseController
 {
     var $modelAuthor;
-    var $pageConfig;
+    var $config;
 
-    public function __construct()
+    public function initController($request, $response, $logger)
     {
+        parent::initController($request, $response, $logger);
         $this->modelAuthor = new ModelAuthor();
-        $this->pageConfig = config('App');
     }
 
     public function loadAuthors()
     {
-        $itemsPerPage = $this->pageConfig->itemsPerPage;
+        $itemsPerPage = $this->config->itemsPerPage;
         $data['authors'] = $this->modelAuthor->paginate($itemsPerPage);
         $data['pager'] = $this->modelAuthor->pager;
         return view('ViewAuthors', $data);
