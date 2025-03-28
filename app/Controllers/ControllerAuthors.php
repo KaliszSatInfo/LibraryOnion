@@ -21,6 +21,6 @@ class ControllerAuthors extends BaseController
         $itemsPerPage = $this->config->itemsPerPage;
         $data['authors'] = $this->modelAuthor->paginate($itemsPerPage);
         $data['pager'] = $this->modelAuthor->pager;
-        return view('ViewAuthors', $data);
+        return view('authors/ViewAuthors', $data);
     }
 }

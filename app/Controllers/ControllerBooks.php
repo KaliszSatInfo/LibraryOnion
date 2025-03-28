@@ -21,6 +21,6 @@ class ControllerBooks extends BaseController
         $itemsPerPage = $this->config->itemsPerPage;
         $data['books'] = $this->modelBook->paginate($itemsPerPage);
         $data['pager'] = $this->modelBook->pager;
-        return view('ViewBooks', $data);
+        return view('books/ViewBooks', $data);
     }
 }
