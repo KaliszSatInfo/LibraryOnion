@@ -8,8 +8,9 @@ class ControllerHomepage extends BaseController
 {
     var $library;
 
-    public function __construct()
+    public function initController($request, $response, $logger)
     {
+        parent::initController($request, $response, $logger);
         $this->library = new LibraryHomepage();
     }
 
