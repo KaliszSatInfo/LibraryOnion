@@ -24,8 +24,19 @@
                 </div>
             </div>
         </nav>
-         <div class="container">
-         <?= $this->renderSection("content");?>
-         </div>
+
+        <div class="container mt-3">
+            <?php if (!empty($breadcrumbs)): ?>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <?= $breadcrumbs ?>
+                    </ol>
+                </nav>
+            <?php endif; ?>
+        </div>
+
+        <div class="container">
+            <?= $this->renderSection("content");?>
+        </div>
     </body>
 </html>

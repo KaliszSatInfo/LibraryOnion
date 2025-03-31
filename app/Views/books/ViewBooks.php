@@ -8,7 +8,7 @@
                 <div class="card h-100">
                     <img src="<?= $book->cover_image ?>" class="card-img-top" alt="Cover">
                     <div class="card-body">
-                        <h5 class="card-title"><?= $book->title ?></h5>
+                        <h5 class="card-title"><?= anchor('books/'.$book->id, $book->title) ?></h5>
                     </div>
                 </div>
             </div>

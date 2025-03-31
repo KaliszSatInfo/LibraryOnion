@@ -7,7 +7,6 @@ use App\Models\ModelBook;
 class ControllerBooks extends BaseController
 {
     var $modelBook;
-    var $config;
 
     public function initController($request, $response, $logger)
     {
@@ -15,12 +14,13 @@ class ControllerBooks extends BaseController
         $this->modelBook = new ModelBook();
     }
 
-
     public function loadBooks()
     {
+        $this->addBreadcrumb('Books', '/LibraryOnion/books');
+
         $itemsPerPage = $this->config->itemsPerPage;
         $data['books'] = $this->modelBook->paginate($itemsPerPage);
         $data['pager'] = $this->modelBook->pager;
-        return view('books/ViewBooks', $data);
+        return $this->renderView('books/ViewBooks', $data);
     }
 }

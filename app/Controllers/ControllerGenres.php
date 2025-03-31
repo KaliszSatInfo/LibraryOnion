@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\ModelGenre;
-use Psr\Log\LoggerInterface;
 
 class ControllerGenres extends BaseController
 {
@@ -18,11 +17,9 @@ class ControllerGenres extends BaseController
 
     public function loadGenres()
     {
-    $genresPerpage = $this->config->genresPerpage;
-    $data['genres'] = $this->modelGenre->orderBy('name', 'asc')->paginate($genresPerpage);   
-    $data['pager'] = $this->modelGenre->pager;
-    return view('genres/ViewGenres', $data);
+        $genresPerpage = $this->config->genresPerpage;
+        $data['genres'] = $this->modelGenre->orderBy('name', 'asc')->paginate($genresPerpage);   
+        $data['pager'] = $this->modelGenre->pager;
+        return $this->renderView('genres/ViewGenres', $data);
     }
-
-
 }

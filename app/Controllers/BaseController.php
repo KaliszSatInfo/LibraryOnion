@@ -9,6 +9,7 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use Config\ConfigConfig;
+use App\Libraries\LibraryBreadcrumbs;
 
 /**
  * Class BaseController
@@ -36,25 +37,32 @@ abstract class BaseController extends Controller
      *
      * @var list<string>
      */
-    protected $helpers = [];
-
-    /**
-     * Be sure to declare properties for any property fetch you initialized.
-     * The creation of dynamic property is deprecated in PHP 8.2.
-     */
-    // protected $session;
+    protected $helpers = ['html','form'];
 
     /**
      * @return void
      */
+    var $breadcrumbs;
+    var $config;
+
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
-        // Preload any models, libraries, etc, here.
 
-        // E.g.: $this->session = service('session');
-
+        $this->breadcrumbs = new LibraryBreadcrumbs();
+        $this->addBreadcrumb('Home', '/LibraryOnion');
         $this->config = new ConfigConfig();
+    }
+
+    public function addBreadcrumb($label, $url = '#')
+    {
+        $this->breadcrumbs->push($label, $url);
+    }
+
+    public function renderView(string $view, array $data = [])
+    {
+        $data['breadcrumbs'] = $this->breadcrumbs->show();
+        return view($view, $data);
     }
 }

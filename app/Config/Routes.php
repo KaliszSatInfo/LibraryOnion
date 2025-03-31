@@ -12,3 +12,5 @@ $routes->get('books', 'ControllerBooks::loadBooks');
 $routes->get('authors', 'ControllerAuthors::loadAuthors');
 
 $routes->get('genres', 'ControllerGenres::loadGenres');
+
+$routes->get('books/(:num)', 'ControllerBook::loadBook/$1');

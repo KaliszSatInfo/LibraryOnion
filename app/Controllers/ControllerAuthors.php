@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\ModelAuthor;
-use Psr\Log\LoggerInterface;
 
 class ControllerAuthors extends BaseController
 {
@@ -21,6 +20,6 @@ class ControllerAuthors extends BaseController
         $itemsPerPage = $this->config->itemsPerPage;
         $data['authors'] = $this->modelAuthor->paginate($itemsPerPage);
         $data['pager'] = $this->modelAuthor->pager;
-        return view('authors/ViewAuthors', $data);
+        return $this->renderView('authors/ViewAuthors', $data);
     }
 }
