@@ -17,7 +17,7 @@ class SeederBook extends Seeder
     {
         $faker = Factory::create();
 
-        for($i = 0; $i < 500; $i++){
+        for($i = 0; $i < 5000; $i++){
             $data = [
                 'title' => $this->translate($faker->sentence(4), "la", "en"),
                 'description' => $this->translate($faker->paragraph(8), "la", "en"),
