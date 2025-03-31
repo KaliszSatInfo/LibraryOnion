@@ -17,12 +17,12 @@ class ControllerGenres extends BaseController
     }
 
     public function loadGenres()
-{
+    {
     $genresPerpage = $this->config->genresPerpage;
     $data['genres'] = $this->modelGenre->orderBy('name', 'asc')->paginate($genresPerpage);   
     $data['pager'] = $this->modelGenre->pager;
     return view('genres/ViewGenres', $data);
-}
+    }
 
 
 }
