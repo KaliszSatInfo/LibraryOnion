@@ -3,7 +3,6 @@
 
 <div id="homepageCarousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-
     <?php foreach ($items as $index => $item): ?>
       <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
         <div class="row p-4">
@@ -13,15 +12,21 @@
           <div class="col-md-6">
             <h4><?= $item->title ?></h4>
             <p><?= $item->description ?></p>
-            <div class="d-flex align-items-center mt-3">
-              <img src="<?= $item->portrait_image ?>" class="me-2" width="96" height="96" alt="Author">
-              <div><?= $item->first_name . ' ' . $item->last_name ?></div>
+            <div class="row mt-3">
+              <?php 
+              $portraitImages = explode(',', $item->portrait_images);
+              $authors = explode(',', $item->authors);
+              foreach ($portraitImages as $index => $portrait): ?>
+                <div class="col-6 d-flex align-items-center">
+                  <img src="<?= $portrait ?>" class="rounded me-2" width="96" height="96" alt="Author">
+                  <div><?= $authors[$index] ?? '' ?></div>
+                </div>
+              <?php endforeach; ?>
             </div>
           </div>
         </div>
       </div>
     <?php endforeach; ?>
-
   </div>
 
   <button class="carousel-control-prev" type="button" data-bs-target="#homepageCarousel" data-bs-slide="prev">
