@@ -8,14 +8,14 @@
       <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
         <div class="row p-4">
           <div class="col-md-6 text-center">
-            <img src="<?= esc($item->cover_image) ?>" class="img-fluid rounded" style="max-height: 400px;" alt="Book Cover">
+            <img src="<?= $item->cover_image ?>" class="img-fluid rounded" style="max-height: 400px;" alt="Book Cover">
           </div>
           <div class="col-md-6">
-            <h4><?= esc($item->title) ?></h4>
-            <p><?= esc($item->description) ?></p>
+            <h4><?= $item->title ?></h4>
+            <p><?= $item->description ?></p>
             <div class="d-flex align-items-center mt-3">
-              <img src="<?= esc($item->portrait_image) ?>" class="me-2" width="96" height="96" alt="Author">
-              <div><?= esc($item->first_name) . ' ' . esc($item->last_name) ?></div>
+              <img src="<?= $item->portrait_image ?>" class="me-2" width="96" height="96" alt="Author">
+              <div><?= $item->first_name . ' ' . $item->last_name ?></div>
             </div>
           </div>
         </div>

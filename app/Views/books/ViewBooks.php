@@ -6,9 +6,9 @@
         <?php foreach ($books as $book): ?>
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                 <div class="card h-100">
-                    <img src="<?= esc($book->cover_image) ?>" class="card-img-top" alt="Cover">
+                    <img src="<?= $book->cover_image ?>" class="card-img-top" alt="Cover">
                     <div class="card-body">
-                        <h5 class="card-title"><?= esc($book->title) ?></h5>
+                        <h5 class="card-title"><?= $book->title ?></h5>
                     </div>
                 </div>
             </div>
