@@ -10,3 +10,5 @@ $routes->get('/', 'ControllerHomepage::loadHomepage');
 $routes->get('books', 'ControllerBooks::loadBooks');
 
 $routes->get('authors', 'ControllerAuthors::loadAuthors');
+
+$routes->get('genres', 'ControllerGenres::loadGenres');
