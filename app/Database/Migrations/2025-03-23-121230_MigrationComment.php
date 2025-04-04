@@ -11,13 +11,11 @@ class MigrationComment extends Migration
         $this->forge->addField([
             'id' => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
             'book_id' => ['type' => 'INT', 'unsigned' => true],
-            'user_id' => ['type' => 'INT', 'unsigned' => true],
             'text' => ['type' => 'TEXT'],
-            'date' => ['type' => 'DATE']
+            'date' => ['type' => 'DATE'],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('book_id', 'book', 'id');
-        $this->forge->addForeignKey('user_id', 'user', 'id');
         $this->forge->createTable('comment');
     }
 
