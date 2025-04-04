@@ -30,8 +30,8 @@ class ControllerBook extends BaseController
             ->groupBy('book.id')
             ->first();
 
-        $this->addBreadcrumb('Books', '/LibraryOnion/books');
-        $this->addBreadcrumb($data['book']->title, "/LibraryOnion/books/{$id}");
+        $this->addBreadcrumb('Books', base_url('books'));
+        $this->addBreadcrumb($data['book']->title, base_url('books/').$id); 
 
         return $this->renderView('books/ViewBook', $data);
     }

@@ -16,7 +16,7 @@ class ControllerBooks extends BaseController
 
     public function loadBooks()
     {
-        $this->addBreadcrumb('Books', '/LibraryOnion/books');
+        $this->addBreadcrumb('Books', base_url('books'));
 
         $itemsPerPage = $this->config->itemsPerPage;
         $data['books'] = $this->modelBook->paginate($itemsPerPage);

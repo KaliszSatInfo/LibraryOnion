@@ -51,7 +51,7 @@ abstract class BaseController extends Controller
         parent::initController($request, $response, $logger);
 
         $this->breadcrumbs = new LibraryBreadcrumbs();
-        $this->addBreadcrumb('Home', '/LibraryOnion');
+        $this->addBreadcrumb('Home', base_url());
         $this->config = new ConfigConfig();
     }
 
