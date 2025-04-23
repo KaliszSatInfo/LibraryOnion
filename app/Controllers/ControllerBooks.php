@@ -40,15 +40,9 @@ class ControllerBooks extends BaseController
 
     public function deleteBook($id)
     {
-        $book = $this->modelBook->find($id);
-
-        if ($book) {
-            $this->modelBookAuthor->where('book_id', $id)->delete();
-            $this->modelBookGenre->where('book_id', $id)->delete();
-
-            $this->modelBook->delete($id);
-        }
-
+        $this->modelBookAuthor->where('book_id', $id)->delete();
+        $this->modelBookGenre->where('book_id', $id)->delete();
+        $this->modelBook->delete($id);
         return redirect()->to('/books');
     }
 
