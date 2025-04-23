@@ -38,6 +38,6 @@ class ControllerBooks extends BaseController
         $this->modelBookAuthor->where('book_id', $id)->delete();
         $this->modelBookGenre->where('book_id', $id)->delete();
         $this->modelBook->delete($id);
-        return redirect()->to('/books')->with('message', 'Book deleted successfully.');
+        return redirect()->to('/books');
     }
 }
