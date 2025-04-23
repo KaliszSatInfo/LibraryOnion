@@ -35,4 +35,21 @@ class ControllerBook extends BaseController
 
         return $this->renderView('books/ViewBook', $data);
     }
+
+    public function editBook($id)
+    {
+        $data['book'] = $this->modelBook->find($id);
+        return view('books/ViewEditBook', $data);
+    }
+
+    public function updateBook($id)
+    {
+        $postData = $this->request->getPost();
+        $this->modelBook->update($id, [
+            'title' => $postData['title'],
+            'description' => $postData['description'],
+            'published_date' => $postData['published_date']
+        ]);
+        return redirect()->to('/books/' . $id);
+    }
 }
