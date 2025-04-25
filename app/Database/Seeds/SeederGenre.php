@@ -50,7 +50,7 @@ class SeederGenre extends Seeder
             'LGBTQ+', 'Queer Fiction', 'Gay Romance', 'Trans Memoir',
             'Mythology', 'Folklore', 'Legend',
             'Zombies', 'Vampires', 'Werewolves',
-            'Noir', 'Pulp Fiction', 'Hardboiled',
+            'Noir', 'Pulp Fiction', 'Hardboiled', 'Isekai'
         ];
         
 

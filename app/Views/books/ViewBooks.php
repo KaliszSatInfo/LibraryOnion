@@ -12,9 +12,7 @@
                         <h5 class="card-title">
                             <?= anchor('books/'.$book->id, $book->title) ?>
                         </h5>
-                        <form action="<?= base_url('books/delete/' . $book->id) ?>" method="POST" onsubmit="return confirm('Are you sure you want to delete this book?');">
-                            <button type="submit" class="btn btn-danger btn-sm mt-3 w-100">Delete</button>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
