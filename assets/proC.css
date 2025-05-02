@@ -1,0 +1,19 @@
+
+.editdiv {
+    border-radius: 10px;
+}
+.savechanges {
+    background-color: #babdbb; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.savechanges:hover {
+    background-color: #45a049;
+}
