@@ -19,3 +19,8 @@ $routes->post('books/update/(:num)', 'ControllerBook::updateBook/$1');
 $routes->post('books/delete/(:num)', 'ControllerBooks::deleteBook/$1');
 $routes->get('books/new', 'ControllerBooks::newBook');
 $routes->post('books/create', 'ControllerBooks::createBook');
+
+$routes->get('login', 'ControllerIonAuth::login');
+$routes->post('login', 'ControllerIonAuth::login');
+$routes->get('register', 'ControllerIonAuth::register');
+$routes->post('register', 'ControllerIonAuth::register');
