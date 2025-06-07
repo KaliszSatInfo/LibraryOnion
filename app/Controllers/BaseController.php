@@ -23,6 +23,7 @@ use App\Libraries\LibraryBreadcrumbs;
  */
 abstract class BaseController extends Controller
 {
+    
     /**
      * Instance of the main Request object.
      *
@@ -44,12 +45,14 @@ abstract class BaseController extends Controller
      */
     var $breadcrumbs;
     var $config;
+    var $session;
 
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
+        $this->session = \Config\Services::session();
         $this->breadcrumbs = new LibraryBreadcrumbs();
         $this->addBreadcrumb('Home', base_url());
         $this->config = new ConfigConfig();
