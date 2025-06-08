@@ -19,7 +19,8 @@
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('books') ?>">Books</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('authors') ?>">Authors</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('genres') ?>">Genres</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<?= base_url() ?>">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('register') ?>">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('login') ?>">Login</a></li>
                     </ul>
                 </div>
             </div>

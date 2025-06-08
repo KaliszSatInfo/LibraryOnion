@@ -2157,8 +2157,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "benedmunds/codeigniter-ion-auth": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
