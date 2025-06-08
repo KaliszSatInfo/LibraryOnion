@@ -14,7 +14,7 @@
             $isLoggedIn = $ionAuth->loggedIn();
             $currentUser = $isLoggedIn ? $ionAuth->user()->row() : null;
         ?>
-        <?php if ($isLoggedIn): ?>
+        <?php /* if ($isLoggedIn): ?>
             <div class="text-end text-muted p-2 small">
                 Logged in as: <?= $currentUser->username ?>
             </div>
@@ -22,8 +22,8 @@
             <div class="text-end text-muted p-2 small">
                 Logged out
             </div>
-        <?php endif; ?>
-
+        <?php endif; */?>
+        
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
             <div class="container-fluid">
                 <a class="navbar-brand" href="<?= base_url() ?>">Babylon Onion</a>
@@ -41,7 +41,7 @@
                             <li class="nav-item">
                                 <form method="post" action="<?= base_url('logout') ?>" class="d-inline">
                                     <?= csrf_field() ?>
-                                    <button type="submit" class="nav-link btn btn-link p-0" style="color: inherit; text-decoration: none;">
+                                    <button type="submit" class="nav-link btn btn-link">
                                         Logout
                                     </button>
                                 </form>
