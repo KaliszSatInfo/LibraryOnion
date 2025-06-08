@@ -15,7 +15,7 @@
 
             <div class="mb-4">
                 <label class="block font-medium mb-1">Description</label>
-                <textarea name="description" class="w-full border rounded px-3 py-2"><?= esc($book->description) ?></textarea>
+                <textarea id="description" name="description"><?= esc($book->description) ?></textarea>
             </div>
 
             <div class="mb-4">
@@ -29,5 +29,13 @@
         </form>
     </div>
 </div>
+
+<script src="https://cdn.tiny.cloud/1/wtzrkm9ng24oerzyodd9cyi0i1s1x65v08rza9ytbeza3uhy/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+    tinymce.init({
+      selector: '#description'
+    });
+  </script>
 
 <?= $this->endSection() ?>
