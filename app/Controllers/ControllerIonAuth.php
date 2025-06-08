@@ -40,7 +40,6 @@ class ControllerIonAuth extends BaseController
         return redirect()->to('/login')->with('message', 'You have been logged out successfully.');
     }
 
-
     public function register()
     {
         $method = strtolower($this->request->getMethod());
@@ -55,10 +54,10 @@ class ControllerIonAuth extends BaseController
             $registered = $this->ionAuth->register($identity, $password, $email, $additional_data, $group);
             
             if ($registered) {
-                echo view('IonAuth/ViewLogin');
+                echo view('IonAuth/ViewRegister');
             }
         } else {
-            echo view('IonAuth/ViewLogin');
+            echo view('IonAuth/ViewRegister');
         }
     }
 }
