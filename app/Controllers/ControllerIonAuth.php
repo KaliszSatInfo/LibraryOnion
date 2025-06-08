@@ -17,8 +17,6 @@ class ControllerIonAuth extends BaseController
 
     public function login()
     {
-        helper(['form']);
-
         if ($this->request->getMethod() === 'post') {
             $identity = $this->request->getPost('identity');
             $password = $this->request->getPost('password');
@@ -26,9 +24,9 @@ class ControllerIonAuth extends BaseController
 
             if ($this->ionAuth->login($identity, $password, $remember)) {
                 return redirect()->to('/');
-            } else {
-                return redirect()->back()->with('error', $this->ionAuth->errors());
             }
+
+            return redirect()->back()->with('error', $this->ionAuth->errors());
         }
 
         return view('IonAuth/ViewLogin');
@@ -57,7 +55,7 @@ class ControllerIonAuth extends BaseController
                 echo view('IonAuth/ViewRegister');
             }
         } else {
-            echo view('IonAuth/ViewRegister');
+            return view('IonAuth/ViewRegister');
         }
     }
 }

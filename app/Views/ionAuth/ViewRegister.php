@@ -3,11 +3,7 @@
 
 <div class="container mt-5">
     <h2>Register</h2>
-
-    <?php if (session()->getFlashdata('error')): ?>
-        <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
-    <?php endif; ?>
-
+    
     <form method="post">
         <div class="form-group">
             <label>Username</label>
