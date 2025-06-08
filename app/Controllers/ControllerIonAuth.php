@@ -15,47 +15,55 @@ class ControllerIonAuth extends BaseController
         $this->ionAuth = new IonAuth();
     }
 
-    public function login()
+    public function loadLogin()
     {
-        if ($this->request->getMethod() === 'post') {
-            $identity = $this->request->getPost('identity');
-            $password = $this->request->getPost('password');
-            $remember = $this->request->getPost('remember') ? true : false;
-
-            if ($this->ionAuth->login($identity, $password, $remember)) {
-                return redirect()->to('/');
-            }
-
-            return redirect()->back()->with('error', $this->ionAuth->errors());
+        $referrer = previous_url();
+        if (!str_contains($referrer, '/login') && !str_contains($referrer, '/logout')) {
+            session()->set('redirect_url', $referrer);
         }
 
         return view('IonAuth/ViewLogin');
+    }
+
+   public function processLogin()
+    {
+        $identity = $this->request->getPost('identity');
+        $password = $this->request->getPost('password');
+
+        if ($this->ionAuth->login($identity, $password)) {
+            $redirectUrl = session()->get('redirect_url') ?? '/';
+            session()->remove('redirect_url');
+            return redirect()->to($redirectUrl);
+        }
+
+        return redirect()->back()->with('error', $this->ionAuth->errors());
+    }
+
+    public function loadRegister()
+    {
+        return view('IonAuth/ViewRegister');
+    }
+
+    public function processRegister()
+    {
+        $identity = $this->request->getPost('identity');
+        $password = $this->request->getPost('password');
+        $email = $this->request->getPost('email');
+        $additional_data = [];
+        $group = ['2'];
+
+        $registered = $this->ionAuth->register($identity, $password, $email, $additional_data, $group);
+
+        if ($registered) {
+            return redirect()->to('/login')->with('message', 'Registered successfully, you can now login.');
+        }
+
+        return redirect()->back()->with('error', $this->ionAuth->errors());
     }
 
     public function logout()
     {
         $this->ionAuth->logout();
         return redirect()->to('/login')->with('message', 'You have been logged out successfully.');
-    }
-
-    public function register()
-    {
-        $method = strtolower($this->request->getMethod());
-
-        if ($method === 'post') {            
-            $identity = $this->request->getPost('identity');
-            $password = $this->request->getPost('password');
-            $email = $this->request->getPost('email');
-            $additional_data = [];
-            $group = ['2'];
-            
-            $registered = $this->ionAuth->register($identity, $password, $email, $additional_data, $group);
-            
-            if ($registered) {
-                echo view('IonAuth/ViewRegister');
-            }
-        } else {
-            return view('IonAuth/ViewRegister');
-        }
     }
 }

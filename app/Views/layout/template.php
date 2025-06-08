@@ -8,6 +8,22 @@
     </head>
 
     <body>
+
+        <?php 
+            $ionAuth = new \IonAuth\Libraries\IonAuth();
+            $isLoggedIn = $ionAuth->loggedIn();
+            $currentUser = $isLoggedIn ? $ionAuth->user()->row() : null;
+        ?>
+        <?php if ($isLoggedIn): ?>
+            <div class="text-end text-muted p-2 small">
+                Logged in as: <?= $currentUser->username ?>
+            </div>
+        <?php else: ?>
+            <div class="text-end text-muted p-2 small">
+                Logged out
+            </div>
+        <?php endif; ?>
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
             <div class="container-fluid">
                 <a class="navbar-brand" href="<?= base_url() ?>">Babylon Onion</a>
@@ -19,12 +35,26 @@
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('books') ?>">Books</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('authors') ?>">Authors</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('genres') ?>">Genres</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<?= base_url('register') ?>">Register</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<?= base_url('login') ?>">Login</a></li>
+
+
+                        <?php if ($isLoggedIn): ?>
+                            <li class="nav-item">
+                                <form method="post" action="<?= base_url('logout') ?>" class="d-inline">
+                                    <?= csrf_field() ?>
+                                    <button type="submit" class="nav-link btn btn-link p-0" style="color: inherit; text-decoration: none;">
+                                        Logout
+                                    </button>
+                                </form>
+                            </li>
+                        <?php else: ?>
+                            <li class="nav-item"><a class="nav-link" href="<?= base_url('register') ?>">Register</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<?= base_url('login') ?>">Login</a></li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
         </nav>
+
 
         <div class="container mt-3">
             <?php if (!empty($breadcrumbs)): ?>

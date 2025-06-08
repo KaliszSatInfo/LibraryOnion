@@ -91,5 +91,5 @@ class Autoload extends AutoloadConfig
      *
      * @var list<string>
      */
-    public $helpers = ['img', 'form'];
+    public $helpers = ['img', 'form', 'ion_auth'];
 }

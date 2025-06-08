@@ -20,8 +20,8 @@ $routes->post('books/delete/(:num)', 'ControllerBooks::deleteBook/$1');
 $routes->get('books/new', 'ControllerBooks::newBook');
 $routes->post('books/create', 'ControllerBooks::createBook');
 
-$routes->get('login', 'ControllerIonAuth::login');
-$routes->post('login', 'ControllerIonAuth::login');
-$routes->get('register', 'ControllerIonAuth::register');
-$routes->post('register', 'ControllerIonAuth::register');
-$routes->get('logout', 'ControllerIonAuth::logout');
+$routes->get('login', 'ControllerIonAuth::loadLogin');
+$routes->post('login', 'ControllerIonAuth::processLogin');
+$routes->get('register', 'ControllerIonAuth::loadRegister');
+$routes->post('register', 'ControllerIonAuth::processRegister');
+$routes->post('logout', 'ControllerIonAuth::logout');
