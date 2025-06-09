@@ -27,16 +27,25 @@ class ControllerIonAuth extends BaseController
 
     public function processLogin()
     {
-        $identity = $this->request->getPost('identity');
+        $input = $this->request->getPost('identity');
         $password = $this->request->getPost('password');
 
-        if ($this->ionAuth->login($identity, $password)) {
-            $redirectUrl = session()->get('redirect_url') ?? '/';
-            session()->remove('redirect_url');
-            return redirect()->to($redirectUrl);
+        if (filter_var($input, FILTER_VALIDATE_EMAIL)) {
+            $user = $this->ionAuth->where('email', $input)->users()->row();
+        } else {
+            $user = $this->ionAuth->where('username', $input)->users()->row();
         }
 
-        return redirect()->back()->with('error', $this->ionAuth->errors());
+        if ($user) {
+            $identity = $user->username;
+            if ($this->ionAuth->login($identity, $password)) {
+                $redirectUrl = session()->get('redirect_url') ?? '/';
+                session()->remove('redirect_url');
+                return redirect()->to($redirectUrl);
+            }
+        }
+
+        return redirect()->back()->with('error', $this->ionAuth->errors() ?: 'Invalid login credentials.');
     }
 
     public function loadRegister()

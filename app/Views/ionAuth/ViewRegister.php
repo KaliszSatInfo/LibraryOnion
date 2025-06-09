@@ -17,11 +17,28 @@
 
         <div class="form-group mt-2">
             <label>Password</label>
-            <input type="password" name="password" class="form-control" required>
+            <div class="input-group">
+                <input type="password" id="password" name="password" class="form-control" required>
+                <button type="button" class="btn btn-outline-secondary" onclick="togglePassword()">Show</button>
+            </div>
         </div>
 
         <button type="submit" class="btn btn-success mt-3">Register</button>
     </form>
 </div>
+
+<script>
+    function togglePassword() {
+        const passwordField = document.getElementById("password");
+        const toggleButton = event.target;
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            toggleButton.textContent = "Hide";
+        } else {
+            passwordField.type = "password";
+            toggleButton.textContent = "Show";
+        }
+    }
+</script>
 
 <?= $this->endSection() ?>
