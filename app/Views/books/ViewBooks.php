@@ -18,7 +18,7 @@
                     <img src="<?= $book->cover_image ?>" class="card-img-top" alt="Cover">
                     <div class="card-body d-flex flex-column justify-content-between">
                         <h5 class="card-title">
-                            <?= anchor('books/'.$book->id, esc($book->title)) ?>
+                            <?= anchor('books/'.$book->id, $book->title) ?>
                         </h5>
                     </div>
                 </div>

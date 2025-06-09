@@ -12,8 +12,8 @@
             <img src="<?= $book->cover_image ?>" class="" alt="Cover">
         </div>
         <div class="col-sm mt-5">
-            <h2 class="card-title"><?= esc($book->title) ?></h2> 
-            <p class="description my-3"><?= esc($book->description) ?></p>
+            <h2 class="card-title"><?= $book->title ?></h2> 
+            <p class="description my-3"><?= $book->description ?></p>
             <div class="col-sm no-print">
                 <button type="button" class="btn btn-primary btn-sm mt-3 w-100" onclick="download_pdf()">Download PDF</button>
             </div> 
