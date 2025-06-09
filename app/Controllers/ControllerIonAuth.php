@@ -25,7 +25,7 @@ class ControllerIonAuth extends BaseController
         return view('IonAuth/ViewLogin');
     }
 
-   public function processLogin()
+    public function processLogin()
     {
         $identity = $this->request->getPost('identity');
         $password = $this->request->getPost('password');

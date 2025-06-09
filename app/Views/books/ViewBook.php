@@ -47,7 +47,7 @@ function download_pdf() {
             .from(pdf)
             .set({
                 margin: 10,
-                filename: 'book-details.pdf',
+                filename: '<?= $book->title ?>',
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: {
                     scale: 2,
