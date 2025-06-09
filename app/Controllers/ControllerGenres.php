@@ -22,4 +22,29 @@ class ControllerGenres extends BaseController
         $data['pager'] = $this->modelGenre->pager;
         return $this->renderView('genres/ViewGenres', $data);
     }
+    public function addGenre(){
+        $file = $this->request->getFile('file');
+        if($file->isValid()) /*&& !$file->hasMoved() */{
+            $csvData = $this->parseCSV($file->getTempName());
+            
+            foreach (array_slice($csvData, 1) as $row){
+                $this->modelGenre->insert([
+                    'name' => $row[0]
+                ], true);
+            }
+        }
+         return redirect()->to('/genres');
+    }
+    private function parseCSV($filePath){
+        $rows = [];
+
+        if (($handle = fopen($filePath, 'r')) !== FALSE){
+            while (($data = fgetcsv($handle, 1000, ',')) !== FALSE) {
+                $rows[] = $data;
+            }
+            fclose($handle);
+        }
+        return $rows;
+    }
+    
 }
