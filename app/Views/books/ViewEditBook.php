@@ -6,21 +6,19 @@
         <h1 class="">Edit Book</h1>
 
         <form action="<?= site_url('books/update/' . $book->id) ?>" method="post">
-            <?= csrf_field() ?>
-
             <div class="mb-4 ">
                 <label class="block font-medium mb-1">Title</label>
-                <input type="text" name="title" value="<?= esc($book->title) ?>" class="w-full border rounded px-3 py-2">
+                <input type="text" name="title" value="<?= $book->title ?>" class="w-full border rounded px-3 py-2">
             </div>
 
             <div class="mb-4">
                 <label class="block font-medium mb-1">Description</label>
-                <textarea id="description" name="description"><?= esc($book->description) ?></textarea>
+                <textarea id="description" name="description"><?= $book->description ?></textarea>
             </div>
 
             <div class="mb-4">
                 <label class="block font-medium mb-1">Published Date</label>
-                <input type="text" name="published_date" value="<?= esc($book->published_date) ?>" class="w-full border rounded px-3 py-2">
+                <input type="text" name="published_date" value="<?= $book->published_date ?>" class="w-full border rounded px-3 py-2">
             </div>
 
             <div class="text-right mb-4">
@@ -36,6 +34,6 @@
     tinymce.init({
       selector: '#description'
     });
-  </script>
+</script>
 
 <?= $this->endSection() ?>
