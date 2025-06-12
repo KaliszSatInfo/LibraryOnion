@@ -8,7 +8,7 @@
     </head>
 
     <body>
-
+        <div class="page_wrapper">
         <?php 
             $ionAuth = new \IonAuth\Libraries\IonAuth();
             $isLoggedIn = $ionAuth->loggedIn();
@@ -26,6 +26,7 @@
         
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
             <div class="container-fluid">
+                <li><img class="main_logo" src="assets/book_icon.png"></li>
                 <a class="navbar-brand" href="<?= base_url() ?>">Babylon Onion</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -66,8 +67,16 @@
             <?php endif; ?>
         </div>
 
-        <div class="container">
+        <div class="container content">
             <?= $this->renderSection("content");?>
+        </div>
+
+            <footer class="bg-dark text-white text-center py-3 mt-4">
+                <div class="container">
+                    <p class="mb-0">© 2025 Babylon Onion. All rights reserved.</p>
+                    <p class="mb-0">Powered by CodeIgniter 4</p>
+                </div>
+            </footer>
         </div>
     </body>
 </html>

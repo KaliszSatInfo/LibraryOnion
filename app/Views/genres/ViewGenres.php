@@ -7,14 +7,15 @@
     $isLoggedIn = $ionAuth->loggedIn();
 ?>
 
-<div class="container mt-4">
+<div class="container my-4">
     <?php if($isLoggedIn): ?>
-    <button id="toggleButton">Add genre (CSV)</button>
-    <form id="uploadForm"  method="POST" enctype="multipart/form-data" style= "display: none" action="<?= base_url('addGenre')?>">
-        <input type="file" accept =".csv" name="file" required>
-    <button type="submit">Submit</button>
-  </form>
+      <button id="toggleButton">Add genre (CSV)</button>
+      <form id="uploadForm"  method="POST" enctype="multipart/form-data" style= "display: none" action="<?= base_url('addGenre')?>">
+          <input type="file" accept =".csv" name="file" required>
+      <button type="submit">Submit</button>
+      </form>
   <?php endif; ?>
+
     <div class="row">
         <?php foreach ($genres as $genre): ?>
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-2">
@@ -41,10 +42,8 @@
     toggleBtn.addEventListener('click', () => {
       if (form.style.display === 'none') {
         form.style.display = 'block';
-        //toggleBtn.textContent = 'Hide Upload Form';
       } else {
         form.style.display = 'none';
-        //toggleBtn.textContent = 'Show Upload Form';
       }
     });
   </script>
@@ -90,9 +89,8 @@
     padding: 0.5rem 1rem;
     border-radius: 6px;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 25px;
     cursor: pointer;
-    width: 100%; /* full width */
     transition: background-color 0.2s ease;
   }
 

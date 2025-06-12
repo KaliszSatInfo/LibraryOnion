@@ -4,14 +4,14 @@
 <div id="homepageCarousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <?php foreach ($items as $index => $item): ?>
-      <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
-        <div class="row p-4">
-          <div class="col-md-6 text-center">
+      <div class="carousel-item bg_carousel <?= $index === 0 ? 'active' : '' ?>">
+        <div class="row p-4 w-100">
+          <div class="col-md-5 text-center">
             <img src="<?= $item->cover_image ?>" class="img-fluid rounded" style="max-height: 400px;" alt="Book Cover">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-7">
             <h4><?= $item->title ?></h4>
-            <p><?= $item->description ?></p>
+            <p class="responsive-text"><?= $item->description ?></p>
             <div class="row mt-3">
               <?php 
               $portraitImages = explode(',', $item->portrait_images);

@@ -6,11 +6,11 @@
     $isLoggedIn = $ionAuth->loggedIn();
 ?>
 
-<div class="container mt-4">
-    <?php if ($isLoggedIn): ?>
-        <a href="<?= base_url('books/new') ?>" class="btn btn-primary">Add New Book</a>
-    <?php endif; ?>
-    
+<div class="container my-4">
+        <?php if ($isLoggedIn): ?>
+            <a href="<?= base_url('books/new') ?>" class="btn btn-warning fs-3 mb-4 fw-bold">Add New Book</a>
+        <?php endif; ?>
+
     <div class="row">
         <?php foreach ($books as $book): ?>
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">

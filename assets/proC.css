@@ -17,3 +17,51 @@
 .savechanges:hover {
     background-color: #45a049;
 }
+.main_logo {
+    width: auto;
+    height: 60px;
+    padding-right: 10px;
+}
+.bg_carousel {
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+    margin-top: 30px;
+    padding: 40px;
+    border-radius: 16px;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.page_wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+.responsive-text {
+  font-size: 20px;
+}
+@media (max-width: 1200px) {
+  .responsive-text {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .responsive-text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .responsive-text {
+    font-size: 14px;
+  }
+}
